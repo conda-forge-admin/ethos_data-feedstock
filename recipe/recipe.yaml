@@ -37,7 +37,7 @@ tests:
       imports:
         - ethos_data
         - ethos_data.cli
-        - ethos_data.catalog
+        - ethos_data.catalogs
         - ethos_data.maintain
       pip_check: true
       python_version:
