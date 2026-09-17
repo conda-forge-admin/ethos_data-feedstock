@@ -1,7 +1,7 @@
 schema_version: 1
 
 context:
-  version: "0.1.0"
+  version: "0.2.0"
 
 package:
   name: ethos_data
@@ -9,7 +9,7 @@ package:
 
 source:
   url: https://github.com/FZJ-IEK3-VSA/ETHOS.Data/archive/refs/tags/${{ version }}.tar.gz
-  sha256: 2805bdc8e550c2e080261028b4a04c90c881ea304a08db171eec3426b2e2a9d6
+  sha256: 378f3b896615d82e55bce704d07f179bf25c126d9e9efe0200dc4bf46fbfc615
 
 build:
   number: 0
@@ -37,7 +37,7 @@ tests:
       imports:
         - ethos_data
         - ethos_data.cli
-        - ethos_data.catalog
+        - ethos_data.catalogs
         - ethos_data.maintain
       pip_check: true
       python_version:
