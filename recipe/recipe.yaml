@@ -2,6 +2,7 @@ schema_version: 1
 
 context:
   version: "0.3.0"
+  python_min: "3.10"
 
 package:
   name: ethos_data
@@ -29,6 +30,7 @@ requirements:
     - pooch >=1.8.0
     - pyyaml >=5.4
     - platformdirs >=3.0
+    - pydantic >=2
     - tqdm
     - rclone
 
