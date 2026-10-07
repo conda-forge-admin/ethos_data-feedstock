@@ -48,14 +48,9 @@ tests:
         - "*"
   - script:
       - ethos-data --help
-      # These four check the repository (docs, source tree), which the test
-      # environment does not have.
-      - >-
-        pytest -v tests
-        --deselect tests/test_adapters.py::TestDcache::test_the_login_hint_matches_the_guide
-        --deselect tests/test_layers.py::test_every_exception_is_needed
-        --deselect tests/test_reference.py::TestPages::test_every_block_a_page_asks_for_renders
-        --deselect tests/test_selftest_meta_verify.py::TestSelfTest::test_the_documentation_uses_the_file_that_ships
+      # Tests marked `repository` read the repository around the package
+      # (docs/), which the test environment does not have.
+      - pytest -v tests -m "not repository"
     requirements:
       run:
         - python ${{ python_min }}.*
