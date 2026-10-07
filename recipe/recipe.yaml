@@ -1,7 +1,7 @@
 schema_version: 1
 
 context:
-  version: "0.3.0"
+  version: "0.3.1"
   python_min: "3.10"
 
 package:
@@ -10,7 +10,7 @@ package:
 
 source:
   url: https://github.com/FZJ-IEK3-VSA/ETHOS.Data/archive/refs/tags/${{ version }}.tar.gz
-  sha256: a9ff415a970c13c053b4a6acc36b860e7694e02438f97d1f1151f356bf28c7e5
+  sha256: a2eaab7012b30859362090eb7f898a848733b2f3db7a5ccc66899f2a92294e7b
 
 build:
   number: 0
@@ -28,6 +28,7 @@ requirements:
   run:
     - python >=${{ python_min }}
     - pooch >=1.8.0
+    - requests >=2.19
     - pyyaml >=5.4
     - platformdirs >=3.0
     - pydantic >=2
@@ -47,14 +48,9 @@ tests:
         - "*"
   - script:
       - ethos-data --help
-      # These four check the repository (docs, source tree), which the test
-      # environment does not have.
-      - >-
-        pytest -v tests
-        --deselect tests/test_adapters.py::TestDcache::test_the_login_hint_matches_the_guide
-        --deselect tests/test_layers.py::test_every_exception_is_needed
-        --deselect tests/test_reference.py::TestPages::test_every_block_a_page_asks_for_renders
-        --deselect tests/test_selftest_meta_verify.py::TestSelfTest::test_the_documentation_uses_the_file_that_ships
+      # Tests marked `repository` read the repository around the package
+      # (docs/), which the test environment does not have.
+      - pytest -v tests -m "not repository"
     requirements:
       run:
         - python ${{ python_min }}.*
