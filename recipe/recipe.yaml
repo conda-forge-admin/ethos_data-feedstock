@@ -28,6 +28,7 @@ requirements:
   run:
     - python >=${{ python_min }}
     - pooch >=1.8.0
+    - requests >=2.19
     - pyyaml >=5.4
     - platformdirs >=3.0
     - pydantic >=2
